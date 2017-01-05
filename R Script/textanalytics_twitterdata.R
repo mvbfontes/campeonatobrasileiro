@@ -79,7 +79,7 @@ class(dados_transf)
 dados_transf <- as.data.frame(dados_str)
 corpus <- Corpus(VectorSource(dados_str))
 
-corpus <- tm_map(corpus, stripWhitespace)
+corpus <- tm_map(corpus, stripWhitespace) #realizando tratamento de múltiplos espaços
 corpus <- tm_map(corpus, tolower) #transformando em letra minúsucula
 corpus <- tm_map(corpus, function(x) gsub('@[[:alnum:]]*', '', x)) #removendo menções
 corpus <- tm_map(corpus, removePunctuation) #removendo pontuação
@@ -102,3 +102,20 @@ df <- data.frame(term = names(term.freq), freq = term.freq)
 
 
 View(dfr[order(-dfr$freq),])
+
+
+#Validando a ocorrência das palavras com relação aos tweets originais
+
+diegosouza<-grepl(pattern="diego souza",x=dados$text,ignore.case=TRUE)
+#verificando a quantidade de vezes que a palavra foi mencionada
+sum(diegosouza)
+
+gjesus<-grepl(pattern="g.jesus",x=dados$text,ignore.case=TRUE)
+#verificando a quantidade de vezes que a palavra foi mencionada
+sum(gjesus)
+
+tcheche<-grepl(pattern="tchê tchê",x=dados$text,ignore.case=TRUE)
+#verificando a quantidade de vezes que a palavra foi mencionada
+sum(tcheche)
+
+
