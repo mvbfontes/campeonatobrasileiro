@@ -101,7 +101,7 @@ term.freq <- subset(term.freq, term.freq >=20)
 df <- data.frame(term = names(term.freq), freq = term.freq)
 
 
-View(dfr[order(-dfr$freq),])
+View(df[order(-df$freq),])
 
 
 #Validando a ocorrência das palavras com relação aos tweets originais
